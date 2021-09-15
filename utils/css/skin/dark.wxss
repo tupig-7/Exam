@@ -1,0 +1,19 @@
+/*列表部分*/
+.box-dark .extra-box{
+  background: #333 !important;
+}
+.box-dark .extra-box .extra-item{
+  border-bottom: 1px solid #000 !important;
+}
+.box-dark .extra-box .item-head{
+  color: #999;
+}
+.box-dark .between-box{
+  background: #333 !important;
+}
+.box-dark .between-left{
+    background: #333 !important;
+}
+.box-dark .between-left .item-head{
+  color: #999;
+}

@@ -1,0 +1,9 @@
+<!--component/loading/index.wxml-->
+<view class="cu-modal {{show}} ">
+  <view class="cu-dialog bg-white">
+    <view class="bg-img" style="background-image: url('https://windowleaf.cn/src/gif/loading.gif');height:200px;">
+      <view class="cu-bar justify-end text-white">
+      </view>
+    </view>
+  </view>
+</view>

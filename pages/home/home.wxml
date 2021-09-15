@@ -1,0 +1,201 @@
+<!--pages/home/home.wxml-->
+<view class="box-dark">
+  <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+    <swiper-item wx:for="{{swiperList}}" wx:key="swiper" class="{{cardCur==index?'cur':''}}">
+      <view class="swiper-item">
+        <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+        <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+      </view>
+    </swiper-item>
+  </swiper>
+  <official-account></official-account>
+
+  <view class="cu-modal {{modalName=='gridModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <radio-group class="block" bindchange="gridchange">
+        <view class="cu-list menu text-left">
+          <view class="cu-item" wx:for="{{3}}" wx:key="lists">
+            <label class="flex justify-between align-center flex-sub">
+              <view class="flex-sub">{{index +3}} 列</view>
+              <radio class="round" value="{{index +3}}" checked="{{gridCol==index+3}}"></radio>
+            </label>
+          </view>
+        </view>
+      </radio-group>
+      <view class="cu-list menu text-left solid-top">
+        <view class="cu-item">
+          <view class="content">
+            <text class="text-grey">边框</text>
+          </view>
+          <view class="action">
+            <switch bindchange="gridswitch"></switch>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key="list" wx:if="{{index<gridCol*2}}" data-id="{{ item.id }}" bindtap="step">
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+        <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+          <block wx:if="{{item.badge!=1}}">{{item.badge}}</block>
+        </view>
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="cu-modal {{modalName=='Modal'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">提示</view>
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close text-red"></text>
+        </view>
+      </view>
+      <view class="padding-xl">
+        正在制作中~
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-modal {{skinModal=='skinModal'?'show':''}}" bindtap="hideSkinModal">
+    <view class="cu-dialog" catchtap>
+      <radio-group class="block">
+        <view class="cu-list menu text-left">
+          <view class="cu-item" wx:for="{{skin}}" wx:for-item="item" wx:key="skin">
+            <label class="flex justify-between align-center flex-sub">
+              <view class="flex-sub">{{item}}</view>
+              <radio class="round" data-index="{{index}}" bindtap="switchStyle"></radio>
+            </label>
+          </view>
+        </view>
+      </radio-group>
+    </view>
+  </view>
+
+  <i-notice-bar icon="systemprompt" speed="1000" loop>
+    {{notice}}
+  </i-notice-bar>
+
+  <view class="cu-timeline">
+    <view class="cu-time">{{today}}</view>
+    <view class="cu-item cur cuIcon-noticefill">
+      <view class="content bg-green shadow-blur">
+        <view class="cu-tag bg-cyan">晚安</view>
+        <view class="view-wrap">
+          <text class="type-title">距离考试还有</text>
+          <i-count-down target="{{targetTime1}}" show-day="{{true}}" format="{{myFormat1}}" countdown-class="big" clear-timer="{{clearTimer}}"></i-count-down>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="cu-timeline">
+    <view class="cu-time">3月—4月参加复试申请调剂</view>
+    <view class="cu-item">
+      <view class="content  bg-cyan">
+        <text></text>研考生在这两个月面临的两件大事是复试和调剂。自主划线院校一般会在3月陆续公布初试成绩基本要求，之后组织复试。考生要提前了解报考院校及学院发布的复试时间、地点和具体安排等信息，积极准备复试。教育部也会公布全国初试成绩基本要求。之后非自主划线院校会组织复试、调剂。 考生要提前详细了解往年调剂流程、常见问题及注意事项等，及时关注研招网调剂服务系统的开通时间，把握调剂机会，获取研招单位调剂信息，主动联系拟调剂研招单位，争取最好的调剂结果。
+      </view>
+    </view>
+
+
+    <view class="cu-item">
+      <view class="content  bg-cyan">
+        <text></text>对准备考研的考生来说，如果还是大学在校生，就要处理好日常上课和研考复习的关系；如果是在职考生，则要处理好工作和复习备考的关系。 正就读大三的研考生面临的压力并不小，因为既要继续完成学业，也要抽时间系统备考。考生要全面了解院校和专业信息，初步确定研考目标。院校、专业的选择是研考的关键一步。提早确定专业方向和院校，会使专业课复习更有针对性。考生可结合自身实际情况，综合考虑拟报考学校所在城市、专业发展、师资情况、就业前景等因素。
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">1月—2月复试准备 成绩查询</view>
+    <view class="cu-item">
+      <view class="content  bg-cyan">
+        <text></text>初试过后，考生就要全力准备复试了。考生可先了解目标学校往年的复试信息，如果有机会可向在校读研的学姐学长了解其当年研考复试的情形。准备复试，考生不仅要做好专业知识的复习，还要多练习语言表达，树立复试自信心。考生也要在这段时间了解调剂的概念，查看学校往年的调剂信息，有针对性地准备。 如果考生觉得初试发挥不理想，可着手准备求职简历，尝试寻找适合的实习或工作机会，边等成绩边积累工作经验。 研考初试成绩一般在2月中下旬陆续公布。考生可通过中国研究生招生信息网、省级教育招生考试机构或招生单位公布的方式查询初试成绩。
+      </view>
+    </view>
+
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">2021年12月25日</view>
+    <view class="cu-item cur cuIcon-noticefill">
+      <view class="content bg-green shadow-blur">
+        <view class="cu-tag bg-cyan">上午</view>
+        <view class="cu-tag line-yellow">08:00</view> 开始考试
+      </view>
+    </view>
+  </view>
+
+
+  <view class="cu-timeline">
+    <view class="cu-time">12月参加初试</view>
+    <view class="cu-item">
+      <view class="content  bg-red">
+        <text></text> 12月中旬，考生可凭网报用户名和密码登录研招网下载打印准考证。初试一般安排在12月下旬。考生要调整心态，不要因焦虑、恐慌等情绪而轻言放弃考试；也不要熬夜，可按照考试时间提前调整好作息和饮食。
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">11月现场确认</view>
+    <view class="cu-item">
+      <view class="content  bg-red">
+        <text></text> 研考报名一般在11月进行现场确认。考生要到指定地点现场确认网报信息，采集本人图像等相关电子信息，并缴纳报考费。现场确认具体时间、要求由各省级教育招生考试机构根据本地区报考情况自行确定和公布。考生要及时关注各省级教育招生考试机构发布的公告，按规定完成现场确认。 从11月起，一般而言，考生要开始第三轮冲刺复习。除反复研究往年研考试题外，考生还要练习模拟题，对知识点查漏补缺。考生要计算答题时间，模拟考试情景，争取在考试时更合理地分配时间。
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">10月按时报名</view>
+    <view class="cu-item">
+      <view class="content bg-yellow">
+        <view class="margin-top">研考正式报名一般安排在10月。具备报名资格的考生可登录研招网报名、缴费。选择报考点时，考生要认真阅读网报公告，了解省级教育招生考试机构、招生单位、报考点的有关要求。如有疑问，考生要及时联系相关机构咨询。考生要合理安排报名时间，避开报名初期、末期的网络高峰，避免因网络拥堵而影响报名。 研考生可提前制订国庆小长假的复习计划并严格执行，强化专业课复习。公共课、专业课复习在这段时间进入综合提升阶段。考生要根据大纲要求和变化，对知识进行总结、梳理、查漏补缺，并研究、分析往年试题。距离考试越来越近，考生也要注意调整心态，坚定复习信心。
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">9月了解政策</view>
+    <view class="cu-item">
+      <view class="content bg-yellow">
+        <view class="margin-top">9月，研考政治、英语、数学大纲会相继发布。教育部研考管理规定和考试公告，各招生单位的招生简章、专业目录和招生计划等也会陆续出台。省级教育招生考试机构、报考点也会发布网报公告。在此阶段，考生不仅要完成复习任务，还要认真研究最新研招政策、公共课大纲，也要留意院校网站公布的研招信息，查看所报考专业是否已取消统考招生或者变更考试科目。 考生还要注意预报名时间，按时登录中国研究生招生信息网进行预报名。
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">7月-8月暑期复习弥补弱项</view>
+    <view class="cu-item">
+      <view class="content bg-blue">
+        <view class="margin-top">暑假是考生的强化复习阶段。这段时间也是考生提高专业课成绩的好时机。研考生要根据自身情况制订复习计划并严格执行，通过专项突破弥补弱项。 考生制订复习计划要尽量细致，但也不能难以完成，要让自己每天都有成就感。考生不妨将复习内容分成多个阶段性小目标并限时完成，让复习更有计划性，且容易落实。暑期是提高薄弱科目的好时机。考生要多安排时间复习薄弱科目，尤其要进行专项突破。 复习中，考生要善用笔记本和彩色笔，对重点内容、关键词句、疑难问题进行勾画，以加深记忆，也利于后期重点复习。此外，考生可有针对性地参加暑期辅导班，通过有规律地听课控制复习进度，听取老师指点，课后及时整理消化，有效掌握知识。考生也可找志同道合的考生朋友一起复习，相互督促、鼓励。打算参加研考辅导班的考生要选择有资质、口碑好的辅导机构，不要轻信所谓的“保过”承诺。
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">5月—6月一轮复习夯实基础</view>
+    <view class="cu-item">
+      <view class="content bg-blue">
+        <view class="margin-top">进入5月，大多数考生要全面开始第一轮研考复习了。考生要夯实基础，扎扎实实看一遍书，不要急于做模拟题。对政治、英语、数学三个公共课科目，考生要细致备考。对英语科目，考生在平时要注重积累英语词汇，注重提升英语综合能力。对政治科目，考生不能放松备考，要不断温故知新，也要及时补充和更新知识。对数学科目，考生要多练多算，总结答题规律。 对专业课的复习，考生要紧跟目标院校的专业课方向，有针对性地收集复习资料，包括往年专业课试题和老师的讲义、论文、专著等。考生可登录相关院校网站查找上一年度备考书目，或向在读研究生借阅备考资料。要在前期占有资料的基础上总结形成自己的笔记，构建专业课复习的知识框架。
+          6月，考生要兼顾期末考试和研考复习的时间安排。跨专业考研的考生不要因为研考复习而忽略了本科专业期末考试的准备。考生还可以在6月制订一份暑假备考计划，考虑是自主复习还是报辅导班，是在校复习还是回家备考，复习时间如何安排等。
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-timeline">
+    <view class="cu-time">注意</view>
+    <view class="cu-item">
+      <view class="content bg-red">
+        <view class="margin-top">（具体政策及安排如有变动，以最新公布为准。）
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

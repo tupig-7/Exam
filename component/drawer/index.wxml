@@ -1,0 +1,15 @@
+<!--component/drawer/index.wxml-->
+		<view class="DrawerClose {{modalName}}" bindtap="hideDrawer">
+			<text class="cuIcon-pullright"></text>
+		</view>
+		<scroll-view scroll-y class="DrawerWindow show">
+			<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+				<view class="cu-item arrow" wx:for="{{city}}" wx:for-item="item" wx:key="index">
+        <text class="text-grey">{{item.level}}</text>
+					<view class="content" wx:for="{{item.city}}" wx:for-item="cityName" wx:key="city">
+						<text class="cuIcon-github text-grey"></text>
+						<text class="text-grey">{{item.city}}</text>
+					</view>
+				</view>
+			</view>
+		</scroll-view>

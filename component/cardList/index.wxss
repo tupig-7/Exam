@@ -1,0 +1,10 @@
+/* component/cardList/index.wxss */
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
+.fr {
+  position: fixed;
+  right: 0;
+  float: right;
+}
+

@@ -1,0 +1,293 @@
+<!--pages/scoreLine/scoreLine.wxml-->
+<z-loading show="{{show}}" />
+<view wx:if="{{x}}" class="VerticalBox">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(150vh - 375rpx)">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list1}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{item}}
+    </view>
+  </scroll-view>
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(150vh - 375rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+    <view class="padding-top padding-lr" wx:for="{{list}}" wx:key="list" id="main-{{index}}">
+      <view class='cu-bar solid-bottom bg-white'>
+        <view class='action'>
+          <text class='cuIcon-title text-green'></text> {{item.name}} </view>
+        <view class="action">
+          <button class="cu-btn bg-green shadow" data-A="{{item.A}}" data-B="{{item.B}}" data-idx="{{index}}" bindtap="showModal" data-target="menuModal">折线图</button>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>A区国家线</text> </view>
+        <view class="cu-item" wx:for="{{item.A}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>A区单科线1（满分=100分）</text> </view>
+        <view class="cu-item" wx:for="{{item.Asingle1}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>A区单科线2（满分>100分）</text> </view>
+        <view class="cu-item" wx:for="{{item.Asingle2}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>B区国家线</text> </view>
+        <view class="cu-item" wx:for="{{item.B}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>B区单科线1（满分=100分）</text> </view>
+        <view class="cu-item" wx:for="{{item.Bsingle1}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>B区单科线2（满分>100分）</text> </view>
+        <view class="cu-item" wx:for="{{item.Bsingle2}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>
+
+<view wx:if="{{z}}" class="VerticalBox">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(150vh - 375rpx)">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list2}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{item}}
+    </view>
+  </scroll-view>
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(150vh - 375rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+    <view class="padding-top padding-lr" wx:for="{{list}}" wx:key="list" id="main-{{index}}">
+      <view class='cu-bar solid-bottom bg-white'>
+        <view class='action'>
+          <text class='cuIcon-title text-green'></text> {{item.name}} </view>
+        <view class="action">
+          <button class="cu-btn bg-green shadow" bindtap="showModal" data-A="{{item.A}}" data-B="{{item.B}}" data-idx="{{index}}" data-target="menuModal">折线图</button>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>A区国家线</text> </view>
+        <view class="cu-item" wx:for="{{item.A}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>A区单科线1（满分=100分）</text> </view>
+        <view class="cu-item" wx:for="{{item.Asingle1}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>A区单科线2（满分>100分）</text> </view>
+        <view class="cu-item" wx:for="{{item.Asingle2}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>B区国家线</text> </view>
+        <view class="cu-item" wx:for="{{item.B}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>B区单科线1（满分=100分）</text> </view>
+        <view class="cu-item" wx:for="{{item.Bsingle1}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="cu-list menu">
+        <view class='cu-bar'>
+          <text class=' cuIcon-title text-yellow'>B区单科线2（满分>100分）</text> </view>
+        <view class="cu-item" wx:for="{{item.Bsingle2}}">
+
+          <view class="content">
+            <view class="cu-item {{menuArrow?'arrow':''}}">
+              <view class="content">
+                <text class="cuIcon-favorfill text-green"></text>
+                <text class="text-grey">{{2015 + index}}</text>
+              </view>
+              <view class="action">
+                <text class="text-grey text-sm">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>
+
+
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">国家线对比图</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view class='container'>
+        <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<i-tab-bar current="{{ current }}" color="pink" bindchange="handleChange" fixed="true">
+  <i-tab-bar-item key="x" icon="createtask" current-icon="createtask_fill" title="学硕"></i-tab-bar-item>
+  <i-tab-bar-item key="z" icon="keyboard" current-icon="keyboard" title="专硕"></i-tab-bar-item>
+</i-tab-bar>

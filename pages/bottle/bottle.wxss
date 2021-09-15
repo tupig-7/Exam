@@ -1,0 +1,5 @@
+/* pages/bottle/bottle.wxss */
+.progress-item {
+  margin-top: 20rpx;
+  margin-bottom: 50rpx;
+}

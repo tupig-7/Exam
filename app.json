@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/start/start",
+    "pages/bottle/bottle",
+    "pages/book/book",
+    "pages/bookList/bookList",
+    "pages/index/index",
+    "pages/adjust/adjust",
+    "pages/scoreLine/scoreLine",
+    "pages/resource/resource",
+    "pages/register/register",
+    "pages/status/status",
+    "pages/category/category",
+    "pages/personal/personal",
+    "pages/moni/moni",
+    "pages/errorpage/errorpage",
+    "pages/collecpage/collecpage",
+    "pages/errorstar/errorstar",
+    "pages/examhome/examhome",
+    "pages/exam/exam",
+    "pages/examresult/examresult",
+    "pages/grade/grade",
+    "pages/feedback/feedback",
+    "pages/rank/rank",
+    "pages/course/course",
+    "pages/catelist/catelist",
+    "pages/eorclist/eorclist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFB6C1",
+    "navigationBarTitleText": "肥宅欢乐社",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#1bd0ad",
+    "backgroundColor": "linear-gradient(-90deg, #29bdd9 0%, #276ace 100%)",
+    "list": [
+      {
+        "iconPath": "/images/card.png",
+        "selectedIconPath": "/images/card-selected.png",
+        "text": "首页",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my-selected.png",
+        "text": "我的",
+        "pagePath": "pages/personal/personal"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

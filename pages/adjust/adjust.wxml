@@ -1,0 +1,25 @@
+<!--pages/adjust/adjust.wxml-->
+<z-loading show = "{{show}}"/>
+
+<view class="cu-bar search bg-white margin-top">
+  <view class="cu-avatar round userinfo-avatar"  bindtap="showDrawer"><open-data type="userAvatarUrl"></open-data> </view>
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索学校专业" confirm-type="search" bindinput="setSearchValue"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-green shadow-blur round" bindtap="search">搜索</button>
+  </view>
+</view>
+<i-notice-bar>
+    注意去官网核实消息真假，防止受骗！！！
+</i-notice-bar>
+<official-account></official-account>
+<scroll-view scroll-y scroll-with-animation="true" lower-threshold="100" scroll-top="{{topNum}}" bindscrolltolower="scrollToLower" style="height: 100vh;">
+<z-cardList adjust="{{adjust}}" ></z-cardList >
+</scroll-view>
+<button class="cu-btn round shadow top bg-olive" bindtap="toTop"><text class='cuIcon-top text-orange' ></text></button>
+
+
+
+

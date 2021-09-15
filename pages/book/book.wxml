@@ -1,0 +1,17 @@
+<!--pages/book/book.wxml-->
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text> 书籍
+  </view>
+  <view class="action">
+  </view>
+</view>
+<view  wx:for="{{books}}" wx:key="book" wx:for-item="book" wx:for-index="idx" class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <view class="cu-item arrow">
+    <navigator class="content" hover-class="none" url="../bookList/bookList?id={{idx+1}}" open-type="navigate">
+      <text class="cuIcon-discoverfill text-orange"></text>
+      <text class="text-grey">{{book}}</text>
+    </navigator>
+  </view>
+
+</view>

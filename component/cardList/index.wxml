@@ -1,0 +1,42 @@
+<!--component/cardList/index.wxml-->
+<view wx:for="{{ adjust }}" wx:for-item="item" wx:key="adjust">
+  <view class="cu-card dynamic isCard shadow">
+    <view class="cu-item shadow">
+      <view class="cu-list menu-avatar shadow">
+        <view class="cu-item">
+          <view class="cu-avatar round lg" ><open-data type="userAvatarUrl"></open-data> </view>
+          <view class="content flex-sub">
+            <view>
+               <text class="cuIcon-shopfill text-blue">{{ item.school }}</text>  
+                <view class="fr padding-sm">
+                <button class="cu-btn round line-orange shadow" open-type="share">
+                  <text class='cuIcon-share text-orange' ></text>
+                </button>
+                </view>
+            </view>
+            <view class="text-gray text-sm flex justify-between">
+             <text class="cuIcon-timefill text-orange">{{ item.time }}</text> 
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="caption-wrap">
+        <text class="text-content solid-bottom text-df padding">{{ item.title }}</text>
+        <i-cell-group>
+          <i-cell title="专业" value="{{ item.major }}"></i-cell>
+          <i-cell title="招生人数" value="{{ item.num }}人"></i-cell>
+          <i-cell title="邮箱" value="{{ item.email }}" data-text="{{ item.email }}" bindtap="copy"></i-cell>
+          <i-cell title="原文链接" value="{{ item.link }}" data-text="{{ item.link }}" bindtap="copy"></i-cell>
+        </i-cell-group>
+        <i-collapse name="{{name}}">
+          <i-collapse-item title="详细信息" name="name1">
+            <view slot="content" data-text="{{ item.content }}" bindtap="copy">
+              {{ item.content }}
+            </view>
+          </i-collapse-item>
+        </i-collapse>
+
+      </view>
+    </view>
+  </view>
+</view>

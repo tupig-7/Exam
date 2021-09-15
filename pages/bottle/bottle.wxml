@@ -1,0 +1,24 @@
+<!--pages/bottle/bottle.wxml-->
+<view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
+  <view class="cu-item grid-square flex solid-bottom padding justify-between" wx:for="{{iconList}}" wx:key="lists">
+    <view class="cu-avatar round lg margin-left text-{{item.color}} " style="background-image:url({{item.icon}});">
+      <text>钱</text>
+      <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+        <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+      </view>
+    </view>
+    <text>{{item.name}}</text>
+    <view class="progress-item">
+      <i-progress percent="{{ item.badge }}" status="{{ status }}"></i-progress>
+      <view class="btn-group">
+        <button class="cu-btn sm bg-yellow shadow" data-id="{{item.id}}" bindtap="handleReduce" type="ghost">
+          <text class="cuIcon-weblock sm"></text>
+        </button>
+        <button class="cu-btn  sm bg-yellow shadow" data-id="{{item.id}}" bindtap="handleAdd" type="ghost">
+          <view class="text-red sm cuIcon-weunblock"></view>
+        </button>
+      </view>
+
+    </view>
+  </view>
+</view>

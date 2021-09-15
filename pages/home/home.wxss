@@ -1,0 +1,12 @@
+/* pages/home/home.wxss */
+@import "/utils/css/skin/dark.wxss";
+	.tower-swiper .tower-item {
+		transform: scale(calc(0.5 + var(--index) / 10));
+		margin-left: calc(var(--left) * 100rpx - 150rpx);
+		z-index: var(--index);
+	}
+
+.bg-dark {
+    background-color: dark;
+    
+  }

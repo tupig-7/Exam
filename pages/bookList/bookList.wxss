@@ -1,0 +1,6 @@
+/* pages/bookList/bookList.wxss */
+.btn-group {
+  position:fixed;
+  bottom:0;
+  width: 100%;
+}

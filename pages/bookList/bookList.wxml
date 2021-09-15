@@ -1,0 +1,78 @@
+<!--pages/bookList/bookList.wxml-->
+<view class="cu-bar bg-white solid-bottom margin-top">
+
+  <scroll-view scroll-x class="bg-white nav">
+    <view class="flex text-center">
+      <view class="cu-item flex-sub {{index==tabCur?'text-pink cur':''}}" wx:for="{{list}}" wx:key="list" wx:for-item="itemName" bindtap="tabSelect" data-id="{{index}}">
+        {{itemName}}-{{listNum[index]}}
+      </view>
+    </view>
+  </scroll-view>
+  <view class="action">
+    <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="gridModal">
+      <view class="cuIcon-settings lg"></view>
+    </button>
+  </view>
+</view>
+
+<view class="cu-modal {{modalName=='gridModal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog">
+    <radio-group class="block" bindchange="sortedBy">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{radioList}}" wx:key="radioList" wx:for-item="rl">
+          <label class="flex justify-between align-center flex-sub">
+            <view class="flex-sub">{{rl}} </view>
+            <radio class="round" value="{{rl}}" checked="{{rl_index==index}}"></radio>
+          </label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>
+
+<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
+  <block wx:for="{{chapter}}" wx:key>
+    <view class="padding indexItem-{{list[index]}} arrow text-lg text-center" id="indexes-{{list[index]}}" data-index="{{chapter[index]}}">{{chapter[index]}}</view>
+    <view class="cu-list menu-avatar no-padding">
+      <view class="cu-item arrow" wx:for="{{chapterList[index]}}" wx:key wx:for-index="sub" >
+        <view class="cu-avatar round bg bg-cyan">
+          <radio class="blue lg radio " value=""></radio>
+        </view>
+        <view class="content arrow" >
+          <view class="text-cyan text-lg">
+          {{chapterList[index][sub]}}
+          </view>
+          <view class="text-gray text-sm">
+            意思
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+<view class="indexBar" style="height:calc(100vh - {{CustomBar}}px - 50px)">
+  <view class="indexBar-box" bindtouchstart="tStart" bindtouchend="tEnd" catchtouchmove="tMove">
+    <view class="indexBar-item" wx:for="{{list}}" wx:key id="{{index}}" bindtouchstart="getCur" bindtouchend="setCur">{{list[index]}}</view>
+  </view>
+</view>
+<!--选择显示-->
+<view hidden="{{hidden}}" class="indexToast">
+  {{listCur}}
+</view>
+
+<view class="btn-group">
+
+  <view class="cu-bar margin-top bg-white">
+    <view class="action">
+      <button class="cu-btn   bg-cyan shadow lg">
+        <view class="cuIcon-sort"></view>顺选</button>
+      <button class="cu-btn  bg-cyan shadow lg">
+        <view class="cuIcon-order"></view>随机</button>
+    </view>
+    <view class="action">
+      <button class="cu-btn  bg-cyan shadow lg">
+        <view class="cuIcon-roundcheckfill"></view>确定</button>
+    </view>
+  </view>
+
+</view>
